@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MONO MOMENTS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Oswald', sans-serif;
+            color: #ffffff;
+        }
+
+        /* ナビゲーション */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #1a1a1a;
+        }
+
+        .logo {
+            font-size: 29px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            line-height: 1.1;
+        }
+
+        .logo span {
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: normal;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff8c00;
+        }
+
+        .accent {
+            color: #ff8c00;
+            font-style: normal;
+        }
+
+
+        /* ヒーロー画像 */
+        .hero {
+            position: relative;
+            margin: 0 40px;
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(70%);
+        }
+
+        .hero-text {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 70px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        .hero-text p {
+            font-size: 21px;
+            letter-spacing: 2px;
+            margin-top: 4px;
+            color: #ffffff;
+        }
+
+        .hero-text p span {
+            color: #ff8c00;
+        }
+
+        /* ABOUT ME */
+        .about {
+            padding: 80px 40px;
+            margin-top: 40px;
+        }
+
+        .section-title {
+            color: #ff8c00;
+            font-size: 40px;
+            letter-spacing: 6px;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-img {
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .about-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .about-row {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            border-bottom: 1px solid #444444;
+            padding-bottom: 20px;
+        }
+
+        .about-label {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            min-width: 80px;
+            color: #ffffff;
+        }
+
+        .about-desc {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        /* WORKS */
+        .works {
+            padding: 80px 40px;
+            border-top: 1px solid #444444;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .coming-text {
+            font-size: 36px;
+            letter-spacing: 10px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .coming-sub {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #888888;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 80px 40px;
+            border-top: 1px solid #444444;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: #cccccc;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            border: 1px solid #ff8c00;
+            color: #ff8c00;
+            padding: 15px 50px;
+            letter-spacing: 4px;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background-color: #ff8c00;
+            color: #ffffff;
+        }
+
+        /* フェードインアニメーション */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-text {
+            animation: fadeIn 2s ease;
+        }
+
+        .about,
+        .works,
+        .contact {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .about.visible,
+        .works.visible,
+        .contact.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ナビゲーション -->
+    <nav>
+        <div class="logo">
+            MONO<br>MOMENTS
+            <span>A touch of <b style="color: #ff8c00;">color</b> in quiet moment</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Works</a></li>
+            <li><a href="#" class="active">Info</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ヒーロー画像 -->
+    <div class="hero">
+        <img src="sunset.png" alt="sunset">
+        <div class="hero-text">
+            <h1>MONO<br>MOMENTS</h1>
+            <p>A touch of <span>color</span> in quiet moment</p>
+        </div>
+    </div>
+    <!-- ABOUT ME -->
+    <div class="about">
+        <h2 class="section-title">ABOUT ME</h2>
+        <div class="about-content">
+            <img src="rikako.png" alt="rika" class="about-img">
+            <div class="about-text">
+                <div class="about-row">
+                    <span class="about-label">RIKA</span>
+                    <span class="about-desc">中学校英語教諭を辞めて海外ノマド生活中です🌏<br>
+                        好きな場所はタイのチェンマイ🇹🇭<br>
+                        趣味は食べること、食べたらその分動くこと🏃‍♀️<br>笑顔が一番の武器！毎日全力で楽しく生きてます😆<br>
+                        自由に生きてるのに米と珈琲には縛られてる24歳🍚☕</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-label">TOOLS</span>
+                    <span class="about-desc">Studio / Notion / Slack / Git / GitHub / Canva</span>
+                </div>
+                <div class="about-row">
+                    <span class="about-label">SKILLS</span>
+                    <span class="about-desc">HTML / CSS / JavaScript / React / Node.js / Studio / Web制作 / Canva</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- WORKS -->
+    <div class="works">
+        <h2 class="section-title">WORKS</h2>
+        <div class="coming-soon">
+            <p class="coming-text">COMING SOON</p>
+            <p class="coming-sub">現在制作実績を準備中です。</p>
+        </div>
+    </div>
+    <!-- CONTACT -->
+    <div class="contact">
+        <h2 class="section-title">CONTACT</h2>
+        <div class="contact-content">
+            <p class="contact-text">お仕事のご依頼・ご相談はこちらからどうぞ</p>
+            <a href="mailto:rikako.k0720@gmail.com" class="contact-btn">GET IN TOUCH</a>
+        </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.about, .works, .contact')
+            .forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
